@@ -14,6 +14,22 @@ export default class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    console.log('componentDidMount');
+    const contacts = localStorage.getItem('key');
+    const localContacts = JSON.parse(contacts);
+    if (localContacts) {
+      this.setState({ contacts: localContacts });
+    }
+  }
+
+  componentDidUpdate(prevState, prevProps) {
+    console.log('componentDidUpdate');
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('key', JSON.stringify(this.state.contacts));
+    }
+  }
+
   deleteContact = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
