@@ -46,6 +46,7 @@ export default class App extends Component {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, data],
     }));
+    resetForm();
   };
 
   onFilter = evt => {
