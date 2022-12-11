@@ -36,7 +36,7 @@ export default class App extends Component {
     }));
   };
 
-  submitForm = data => {
+  submitForm = (data, {resetForm}) => {
     data.id = nanoid();
     const contacts = this.state.contacts;
     const containsNamee = contacts.find(contact => contact.name === data.name);
